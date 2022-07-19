@@ -1,0 +1,40 @@
+# See https://help.github.com/ignore-files/ for more about ignoring files.
+
+# dependencies
+node_modules
+/api/node_modules
+/client/node_modules
+
+# testing
+/coverage
+
+# production
+#/build
+
+# Github actions Pullrequest
+.github/pull_request_template.md
+.github/workflows/CI-backend-dev.py
+.github/workflows/CI-backend-dev.yml
+#/.github/*
+test-report.xml
+
+# misc
+.DS_Store
+.idea
+.env.local
+.env.dev
+.env.test.local
+.env.prod
+.env.*
+.env 
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+export
+csv
+
+# Ignoring changes to newman folder, consider commenting below line
+# only if there are any changes to be done on POSTMAN API test cases
+/newman

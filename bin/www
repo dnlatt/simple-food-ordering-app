@@ -1,0 +1,9 @@
+const http = require('http');
+const app = require('../App');
+const server = http.createServer(app);
+const models = require('../models');
+
+server.listen(app.get('port'), () => {
+  console.log(`Server is running on port ` + app.get('port'));
+});
+
