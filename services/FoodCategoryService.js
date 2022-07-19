@@ -12,7 +12,6 @@ module.exports = {
         try {
 
             const data = await FoodCategoryRepository.create(fields, request);
-
             return { data: data, message: MSG_SUCCESS };
 
         } catch (error) {
@@ -39,7 +38,10 @@ module.exports = {
 
     async update(request) {
         const { id } = request.params;
-        const { errors, data, message } = await FoodCategoryRepository.update({ id: id }, request.body);
+        let fields = {
+            categoryName: request.body.categoryname,
+        }
+        const { errors, data, message } = await FoodCategoryRepository.update({ id: id }, fields);
         return { errors, data, message };
     }
 }

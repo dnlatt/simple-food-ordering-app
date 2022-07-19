@@ -13,7 +13,7 @@ module.exports = (app) => {
     /* Base Controller */
     app.get('/', BaseController.index);
 
-    /* Food Category */
+    /* Food Category Start */
     // Fetch all Food Categories
     app.get('/foodcategory/list/', FoodCategoryRequest(), ValidateRequest, FoodCategoryController.list);
     // Create Food Category
@@ -23,5 +23,5 @@ module.exports = (app) => {
     // Update Food Category 
     app.patch('/foodcategory/:id', FoodCategoryRequest(), ValidateRequest, FoodCategoryController.update);
 
-
+    /* Food Category End */
 }

@@ -171,8 +171,8 @@ module.exports = {
     async update (model, criteria, fields, sort = null) {
         const tableName = model.tableName;
         let response = { errors: null, data: null, message: null };
-        if (!criteria) {
-            response.errors = [{ err: NO_DATA_RECEIVED }];
+        if(!criteria || Object.keys(fields).length === 0 ) {
+            response.errors = [ { err: NO_DATA_RECEIVED }];
             return response;
         } else {
             try {
@@ -184,14 +184,6 @@ module.exports = {
                     const result = await record.update(fields);
                     response.message = SUCCESSFULLY_SAVED;
                     response.data = result;
-                    // try {
-                    //     const result = await model.update(fields, {where: criteria});
-                    //     response.message = SUCCESSFULLY_SAVED;
-                    //     response.data = record;
-                    // } catch (error) {
-                    //     response.errors = [{ err: DB_ERROR }];
-                    // }
-                    
                 }
                 else response.errors = [{ err: NO_RECORD }];
 
