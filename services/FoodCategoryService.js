@@ -9,15 +9,8 @@ module.exports = {
         let fields = {
             categoryName: request.body.categoryname,
         }
-        try {
-
-            const data = await FoodCategoryRepository.create(fields, request);
-            return { data: data, message: MSG_SUCCESS };
-
-        } catch (error) {
-           console.debug(error);
-            return { errors: [{ err: MSG_FOOD_CATEGORIYNOT_INSERTED }] }; 
-        }
+        const { errors, data, message } = await FoodCategoryRepository.create(fields, request);
+        return { errors, data, message };
     },
 
     async list (request) {
