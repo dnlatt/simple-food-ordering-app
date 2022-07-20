@@ -1,6 +1,6 @@
 const { check } = require('express-validator');
 const { MAX_INT10_NUMBER, LENGTH_MAXINT_MSG } = require('../helpers/config');
-const FoodCategoryDeleteRequest = () => {//delete - findOne()/destroy()
+const TableDeleteRequest = () => {//delete - findOne()/destroy()
     return [
         check('id')
             .isInt({ min: 1, max: MAX_INT10_NUMBER }).withMessage(LENGTH_MAXINT_MSG),
@@ -8,5 +8,5 @@ const FoodCategoryDeleteRequest = () => {//delete - findOne()/destroy()
 };
 
 module.exports = {
-    FoodCategoryDeleteRequest
+    TableDeleteRequest
 };
