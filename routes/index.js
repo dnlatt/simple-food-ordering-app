@@ -3,11 +3,13 @@
 const BaseController = require("../controllers/BaseController");
 const FoodCategoryController = require('../controllers/FoodCategoryController');
 const UserController = require('../controllers/UserController');
+const CouponController = require('../controllers/CouponController');
 
 /* Validators */
 const { ValidateRequest } = require('../middleware/RequestValidator.js');
 const { FoodCategoryRequest } = require('../validators/FoodCategoryRequest');
 const { UserCreateRequest } = require('../validators/UserCreateRequest');
+const { CouponRequest } = require('../validators/CouponRequest');
 const { TableDeleteRequest } = require('../validators/TableDeleteRequest');
 
 module.exports = (app) => {
@@ -40,5 +42,18 @@ module.exports = (app) => {
     // Delete Food Category
     app.delete('/foodcategory/:id', TableDeleteRequest(), ValidateRequest, FoodCategoryController.destroy);
     /* Food Category End */
+
+    /* Coupon Start */
+
+    // Fetch all Coupons
+    app.get('/coupon/list/', CouponController.list);
+    // Create Coupon
+    app.post('/coupon/', CouponRequest(), ValidateRequest, CouponController.create);
+    // Update Coupon 
+    app.patch('/coupon/:id', CouponRequest(), ValidateRequest, CouponController.update);
+    // Delete Coupon
+    app.delete('/coupon/:id', TableDeleteRequest(), ValidateRequest, CouponController.destroy);
+
+    /* Coupon End */
 
 }
